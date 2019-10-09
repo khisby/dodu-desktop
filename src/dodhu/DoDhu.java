@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dodu;
+package dodhu;
 
 /**
  *
  * @author Khisby
  */
-public class DoDu {
+public class DoDhu {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        System.out.println("Hallo disini Khisby, Hudi, Fernando");
     }
     
 }
