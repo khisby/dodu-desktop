@@ -5,6 +5,9 @@
  */
 package dodhu;
 
+import database.Koneksi;
+import java.sql.SQLException;
+
 /**
  *
  * @author Khisby
@@ -14,7 +17,10 @@ public class DoDhu {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    static private Koneksi db;
+    public static void main(String[] args) throws SQLException {
+        db = new Koneksi();
+        db.getKoneksi();
         System.out.println("Hallo disini Khisby, Hudi, Fernando");
     }
     
