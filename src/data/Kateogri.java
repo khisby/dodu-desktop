@@ -14,6 +14,9 @@ public class Kateogri {
     int id_pengguna;
     String nama_kateogri;
 
+    public Kateogri() {
+    }
+    
     public Kateogri(int id, int id_pengguna, String nama_kateogri) {
         this.id = id;
         this.id_pengguna = id_pengguna;

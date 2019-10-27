@@ -15,6 +15,9 @@ public class Pengguna {
     String surel_pengguna;
     String sandi_pengguna;
 
+    public Pengguna() {
+    }
+
     public Pengguna(int id, String nama_pengguna, String surel_pengguna, String sandi_pengguna) {
         this.id = id;
         this.nama_pengguna = nama_pengguna;

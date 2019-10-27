@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +25,14 @@ public class Koneksi {
     private static String url = "jdbc:mysql://localhost:3306/dodu?zeroDateTimeBehavior=convertToNull";
     private static String username = "root";
     private static String password = "";
+
+    public Koneksi() {
+        try {
+            Koneksi.connect = Koneksi.getKoneksi();
+        } catch (SQLException ex) {
+            Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public static Connection getKoneksi() throws SQLException {
         if (connect == null) {

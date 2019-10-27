@@ -5,6 +5,7 @@
  */
 package dodhu;
 
+import controller.Akun_Controller;
 import database.Koneksi;
 import java.sql.SQLException;
 
@@ -17,10 +18,14 @@ public class DoDhu {
     /**
      * @param args the command line arguments
      */
-    static private Koneksi db;
+    
     public static void main(String[] args) throws SQLException {
-        db = new Koneksi();
-        db.getKoneksi();
+        Akun_Controller a = new Akun_Controller();
+        if(a.login("khisby@gmail.com","khisby1") != null){
+            System.out.println("Berhasil login");
+        }else{
+            System.out.println("Gagal login");
+        }
         System.out.println("Hallo disini Khisby, Hudi, Fernando");
     }
     

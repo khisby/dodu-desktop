@@ -20,6 +20,9 @@ public class Transaksi {
     String keterangan_transaksi;
     Date waktu_transaksi;
 
+    public Transaksi() {
+    }
+    
     public Transaksi(int id, int id_kategori, int id_pengguna, int jenis_transaksi, int nominal_transaksi, String keterangan_transaksi, Date waktu_transaksi) {
         this.id = id;
         this.id_kategori = id_kategori;
