@@ -31,4 +31,13 @@ public class Akun_Controller {
         }
         return peng;
     }
+    
+    public boolean register(String nama, String surel, String sandi){
+        Pengguna pengguna = new Pengguna();
+        pengguna.setNama_pengguna(nama);
+        pengguna.setSurel_pengguna(surel);
+        pengguna.setSandi_pengguna(sandi);
+        
+        return pm.insertPengguna(pengguna);
+    }
 }

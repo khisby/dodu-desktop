@@ -6,7 +6,7 @@
 package Model;
 
 import data.Pengguna;
-import database.Koneksi;
+import App.Koneksi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,6 +47,17 @@ public class Pengguna_Model {
         } catch (SQLException ex) {
             System.out.println("Gagal fetch data dari database");
         }
+    }
+    
+    public boolean insertPengguna(Pengguna pengguna){
+        String query = "INSERT INTO " + this.getTable() + " VALUES(null, '"+pengguna.getNama_pengguna()+"', '"+pengguna.getSurel_pengguna()+"', '"+pengguna.getSandi_pengguna()+"')";
+        int run = kon.ManipulasiData(query);
+        
+        if(run > 0){
+            return true;
+        }
+        
+        return false;
     }
 
     private String getTable() {

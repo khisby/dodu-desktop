@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package App;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,9 +22,9 @@ public class Koneksi {
     private static Connection connect;
     private Statement db;
     private static String driverName = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost:3306/dodu?zeroDateTimeBehavior=convertToNull";
-    private static String username = "root";
-    private static String password = "";
+    private static String url = Config.db;
+    private static String username = Config.username;
+    private static String password = Config.password;
 
     public Koneksi() {
         try {

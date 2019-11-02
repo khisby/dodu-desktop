@@ -9,15 +9,15 @@ package data;
  *
  * @author Khisby
  */
-public class Kateogri {
+public class Kategori {
     int id;
     int id_pengguna;
     String nama_kateogri;
 
-    public Kateogri() {
+    public Kategori() {
     }
     
-    public Kateogri(int id, int id_pengguna, String nama_kateogri) {
+    public Kategori(int id, int id_pengguna, String nama_kateogri) {
         this.id = id;
         this.id_pengguna = id_pengguna;
         this.nama_kateogri = nama_kateogri;
