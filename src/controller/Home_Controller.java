@@ -10,15 +10,23 @@ import Model.Kategori_Model;
 import Model.Pengguna_Model;
 import Model.Transaksi_Model;
 import data.Kategori;
+import data.KategoriHitung;
 import data.Pengguna;
 import data.Transaksi;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import view.Laporan;
 import net.proteanit.sql.DbUtils;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -82,9 +90,58 @@ public class Home_Controller {
         output_tableTransaksi.setModel(modelTableTransaksi);
         
         for(Transaksi trans : tm.getAllTranskasiByUser(Config.pengguna)){
-//            System.out.println(trans.getId());
             modelTableTransaksi.addRow(new Object[]{trans.getId(),trans.getKategori().getNama_kateogri(),trans.getJenis_transaksi_toString(),trans.getNominal_transaksi(),trans.getKeterangan_transaksi(),trans.getWaktu_transaksi()});
         }
+    }
+
+    public void laporan() {
+        ArrayList<KategoriHitung> katHitung = new ArrayList<>();
+        
+        for(Transaksi trans : tm.getAllTranskasiByUserThisMonth(Config.pengguna)){
+            boolean sudahAda = false;
+            for (int i = 0; i < katHitung.size(); i++) {
+                if(katHitung.get(i).getNama().equals(trans.getKategori().getNama_kateogri())){
+                    katHitung.get(i).setJumlah(katHitung.get(i).getJumlah() + trans.getNominal_transaksi());
+                    sudahAda = true;
+                }
+            }
+            
+            if(sudahAda == false){
+                KategoriHitung kat = new KategoriHitung();
+                kat.setNama(trans.getKategori().getNama_kateogri());
+                kat.setJumlah(trans.getNominal_transaksi());
+                katHitung.add(kat);
+            }
+        }
+        
+        DefaultPieDataset data = new DefaultPieDataset();
+        
+        for(KategoriHitung kathit : katHitung){
+            data.setValue(kathit.getNama(), kathit.getJumlah());
+        }
+        
+        
+        JFreeChart chart = ChartFactory.createPieChart("Laporan Bulan Ini", data);
+        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator(
+        "{0} : {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
+        ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);
+        ChartFrame frame = new ChartFrame("Laporan", chart);
+        frame.setSize(500,500);
+        frame.setVisible(true);
+    }
+
+    public void viewKategoriTableByUser(JTable output_tableKategori) {
+        String kolom[] = {"ID Kategori", "Nama Kategori"};
+        DefaultTableModel modelTableKategori = new DefaultTableModel(kolom, 0);
+        output_tableKategori.setModel(modelTableKategori);
+        
+        for(Kategori kat : km.getAllKategoriByUser(Config.pengguna)){
+            modelTableKategori.addRow(new Object[]{kat.getId(),kat.getNama_kateogri()});
+        }
+    }
+
+    public boolean insertKategori(String nama) {
+        return km.insert(Config.pengguna, nama);
     }
     
     

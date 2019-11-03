@@ -13,6 +13,8 @@ import data.Transaksi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -33,6 +35,12 @@ public class Transaksi_Model {
     
     public ArrayList<Transaksi> getAllTranskasiByUser(Pengguna pengguna){
         String query = "SELECT * FROM " + this.getTable() + " WHERE ID_PENGGUNA = " + pengguna.getId();
+        this.refreshData(query);
+        return arr;
+    }
+    
+    public ArrayList<Transaksi> getAllTranskasiByUserThisMonth(Pengguna pengguna){
+        String query = "SELECT * FROM " + this.getTable() + " WHERE ID_PENGGUNA = " + pengguna.getId() + " AND month(WAKTU_TRANSAKSI) = " + this.thisMonth();
         this.refreshData(query);
         return arr;
     }
@@ -105,5 +113,12 @@ public class Transaksi_Model {
         return this.table;
     }
     
+    private int thisMonth(){
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int month = cal.get(Calendar.MONTH);
+        return month+1;
+    }
     
 }
