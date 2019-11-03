@@ -20,10 +20,6 @@ public class Kategori_Model {
     ArrayList<Kategori> arr = new ArrayList<>();
     private String table = "kategori";
     Koneksi kon = new Koneksi();
-
-    public Kategori_Model() {
-        this.refreshData();
-    }
     
     public ArrayList<Kategori> getAllKategori(){
         this.refreshData();

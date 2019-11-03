@@ -45,24 +45,16 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPasswordField1" min="-2" pref="141" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="tf_loginPassword" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="tf_loginEmail" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="89" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jProgressBar1" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField3" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="jPasswordField2" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="tf_registerUsername" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="tf_registerPassword" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="tf_registerEmail" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,23 +68,21 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+              <Component id="tf_registerUsername" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_loginEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPasswordField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_loginPassword" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_registerEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPasswordField2" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_registerPassword" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -103,15 +93,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="email"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="tf_loginEmail">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="password"/>
-      </Properties>
+    <Component class="javax.swing.JPasswordField" name="tf_loginPassword">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_loginPasswordActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
@@ -125,28 +112,20 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Register"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Login Page"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="email"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="tf_registerEmail">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="password"/>
-      </Properties>
+    <Component class="javax.swing.JPasswordField" name="tf_registerPassword">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="username"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+    <Component class="javax.swing.JTextField" name="tf_registerUsername">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>

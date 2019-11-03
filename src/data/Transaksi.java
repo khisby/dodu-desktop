@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public class Transaksi {
     int id;
-    int id_kategori;
-    int id_pengguna;
+    Kategori kategori;
+    Pengguna pengguna;
     int jenis_transaksi;
     int nominal_transaksi;
     String keterangan_transaksi;
@@ -23,10 +23,10 @@ public class Transaksi {
     public Transaksi() {
     }
     
-    public Transaksi(int id, int id_kategori, int id_pengguna, int jenis_transaksi, int nominal_transaksi, String keterangan_transaksi, Date waktu_transaksi) {
+    public Transaksi(int id, Kategori kategori, Pengguna pengguna, int jenis_transaksi, int nominal_transaksi, String keterangan_transaksi, Date waktu_transaksi) {
         this.id = id;
-        this.id_kategori = id_kategori;
-        this.id_pengguna = id_pengguna;
+        this.kategori = kategori;
+        this.pengguna = pengguna;
         this.jenis_transaksi = jenis_transaksi;
         this.nominal_transaksi = nominal_transaksi;
         this.keterangan_transaksi = keterangan_transaksi;
@@ -41,24 +41,32 @@ public class Transaksi {
         this.id = id;
     }
 
-    public int getId_kategori() {
-        return id_kategori;
+    public Kategori getKategori() {
+        return kategori;
     }
 
-    public void setId_kategori(int id_kategori) {
-        this.id_kategori = id_kategori;
+    public void setKategori(Kategori kategori) {
+        this.kategori = kategori;
     }
 
-    public int getId_pengguna() {
-        return id_pengguna;
+    public Pengguna getPengguna() {
+        return pengguna;
     }
 
-    public void setId_pengguna(int id_pengguna) {
-        this.id_pengguna = id_pengguna;
+    public void setPengguna(Pengguna pengguna) {
+        this.pengguna = pengguna;
     }
 
     public int getJenis_transaksi() {
         return jenis_transaksi;
+    }
+    
+    public String getJenis_transaksi_toString() {
+        if(this.jenis_transaksi == 1){
+            return "Masuk";
+        }else{
+            return "Keluar";
+        }
     }
 
     public void setJenis_transaksi(int jenis_transaksi) {
