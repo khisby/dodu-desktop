@@ -121,4 +121,15 @@ public class Transaksi_Model {
         return month+1;
     }
     
+     public boolean insert(int kategori, int pengguna, int jenisTransaksi, int nominalTransaksi, String keterangan, String tanggal){
+        String query = "INSERT INTO " + this.getTable() + " VALUES(null, '"+kategori+"', '"+pengguna+"' , '"+jenisTransaksi+"' , '"+nominalTransaksi+"' , '"+keterangan+"' , '"+tanggal+"')";     System.out.println(query);
+        int run = kon.ManipulasiData(query);
+        
+        if(run > 0){
+            return true;
+        }
+        
+        return false;
+    }
+    
 }

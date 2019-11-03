@@ -14,7 +14,9 @@ import data.KategoriHitung;
 import data.Pengguna;
 import data.Transaksi;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -49,23 +51,7 @@ public class Home_Controller {
             System.out.println(e);
         }
     }
-
-    public void insert(Pengguna peng, String nama) {
-        if(km.insert(peng, nama)){
-            System.out.println("Berhasil ditambahkan");
-        }else{
-            System.out.println("Gagal ditambahkan");
-        }
-    }
-
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     public void viewKategori(JComboBox input) {
         DefaultComboBoxModel modelCbTransaksiKategori = (DefaultComboBoxModel) input.getModel();
         modelCbTransaksiKategori.removeAllElements();
@@ -144,6 +130,8 @@ public class Home_Controller {
         return km.insert(Config.pengguna, nama);
     }
     
-    
+    public boolean insertTransaksi(int kategori, int jenisTransaksi, int nominal, String keterangan){
+        return tm.insert(this.kategori.get(kategori).getId(),Config.pengguna.getId(), jenisTransaksi, nominal , keterangan, new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+    }
     
 }

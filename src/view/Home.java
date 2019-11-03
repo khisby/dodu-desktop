@@ -70,10 +70,10 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         input_transaksiKategori = new javax.swing.JComboBox<String>();
-        tf_transaksiHarga = new javax.swing.JTextField();
+        input_transaksiNominal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        input_transaksiKeterangan = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         output_tableTransaksi = new javax.swing.JTable();
@@ -129,13 +129,18 @@ public class Home extends javax.swing.JFrame {
 
         jLabel5.setText("Keterangan");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        input_transaksiKeterangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                input_transaksiKeteranganActionPerformed(evt);
             }
         });
 
         jButton1.setText("Tambah");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         output_tableTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,8 +175,8 @@ public class Home extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_transaksiHarga)
-                            .addComponent(jTextField4)
+                            .addComponent(input_transaksiNominal)
+                            .addComponent(input_transaksiKeterangan)
                             .addComponent(input_transaksiKategori, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(input_transaksiJenis, 0, 142, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
@@ -193,12 +198,12 @@ public class Home extends javax.swing.JFrame {
                             .addComponent(input_transaksiJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_transaksiHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(input_transaksiNominal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(input_transaksiKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addComponent(jButton1)
                         .addGap(0, 174, Short.MAX_VALUE))
@@ -330,9 +335,9 @@ public class Home extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tf_usernamePenggunaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void input_transaksiKeteranganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_transaksiKeteranganActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_input_transaksiKeteranganActionPerformed
 
     private void input_transaksiKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_transaksiKategoriActionPerformed
         // TODO add your handling code here:
@@ -357,6 +362,15 @@ public class Home extends javax.swing.JFrame {
         new Login().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(this.hc.insertTransaksi(input_transaksiKategori.getSelectedIndex(), input_transaksiJenis.getSelectedIndex(), Integer.parseInt(input_transaksiNominal.getText()), input_transaksiKeterangan.getText())){
+             JOptionPane.showMessageDialog(this, "Berhasil menambah transaksi", "Transaksi", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(this, "Gagal menambah transaksi", "Transaksi", JOptionPane.ERROR_MESSAGE);
+        }
+        refreshComponent();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,6 +411,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField input_kategoriNama;
     private javax.swing.JComboBox input_transaksiJenis;
     private javax.swing.JComboBox<String> input_transaksiKategori;
+    private javax.swing.JTextField input_transaksiKeterangan;
+    private javax.swing.JTextField input_transaksiNominal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -416,10 +432,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTable output_tableKategori;
     private javax.swing.JTable output_tableTransaksi;
-    private javax.swing.JTextField tf_transaksiHarga;
     private javax.swing.JTextField tf_usernamePengguna;
     // End of variables declaration//GEN-END:variables
 }

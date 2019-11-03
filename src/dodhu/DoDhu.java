@@ -10,6 +10,8 @@ import controller.Akun_Controller;
 import App.Koneksi;
 import controller.Home_Controller;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import view.Login;
 
 /**
@@ -23,7 +25,7 @@ public class DoDhu {
      */
     public static void main(String[] args) throws SQLException {
         new Login().setVisible(true);
-
+        
 //        Akun_Controller a = new Akun_Controller();
 //        if(a.login("khisby@gmail.com","khisby1") != null){
 //            Config.pengguna = a.login("khisby@gmail.com", "khisby");
