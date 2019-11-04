@@ -38,6 +38,7 @@ public class Home_Controller {
     private Kategori_Model km;
     private Transaksi_Model tm;
     private ArrayList<Kategori> kategori = new ArrayList<Kategori>();
+    private ArrayList<Transaksi> transaksi = new ArrayList<Transaksi>();
 
     public Home_Controller() {
         try{
@@ -76,6 +77,7 @@ public class Home_Controller {
         output_tableTransaksi.setModel(modelTableTransaksi);
         
         for(Transaksi trans : tm.getAllTranskasiByUser(Config.pengguna)){
+            this.transaksi.add(trans);
             modelTableTransaksi.addRow(new Object[]{trans.getId(),trans.getKategori().getNama_kateogri(),trans.getJenis_transaksi_toString(),trans.getNominal_transaksi(),trans.getKeterangan_transaksi(),trans.getWaktu_transaksi()});
         }
     }
@@ -132,6 +134,10 @@ public class Home_Controller {
     
     public boolean insertTransaksi(int kategori, int jenisTransaksi, int nominal, String keterangan){
         return tm.insert(this.kategori.get(kategori).getId(),Config.pengguna.getId(), jenisTransaksi, nominal , keterangan, new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+    }
+    
+    public boolean deleteTransaksi(int index){
+        return tm.delete(this.transaksi.get(index));
     }
     
 }
