@@ -122,7 +122,7 @@ public class Transaksi_Model {
     }
     
      public boolean insert(int kategori, int pengguna, int jenisTransaksi, int nominalTransaksi, String keterangan, String tanggal){
-        String query = "INSERT INTO " + this.getTable() + " VALUES(null, '"+kategori+"', '"+pengguna+"' , '"+jenisTransaksi+"' , '"+nominalTransaksi+"' , '"+keterangan+"' , '"+tanggal+"')";
+        String query = "INSERT INTO " + this.getTable() + " VALUES(null, "+kategori+", "+pengguna+" , "+jenisTransaksi+" , '"+nominalTransaksi+"' , '"+keterangan+"' , '"+tanggal+"')";
         int run = kon.ManipulasiData(query);
         
         if(run > 0){
@@ -133,8 +133,8 @@ public class Transaksi_Model {
     }
      
      public boolean delete(Transaksi trans){
+         
         String query = "DELETE from " + this.getTable() + " where id_transaksi = "+trans.getId();
-         System.out.println(query);
         int run = kon.ManipulasiData(query);
         
         if(run > 0){

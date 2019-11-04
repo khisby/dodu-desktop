@@ -76,7 +76,9 @@ public class Home_Controller {
         DefaultTableModel modelTableTransaksi = new DefaultTableModel(kolom, 0);
         output_tableTransaksi.setModel(modelTableTransaksi);
         
-        for(Transaksi trans : tm.getAllTranskasiByUser(Config.pengguna)){
+        this.transaksi.clear();
+        
+        for(Transaksi trans : tm.getAllTranskasiByUser(Config.pengguna)){    
             this.transaksi.add(trans);
             modelTableTransaksi.addRow(new Object[]{trans.getId(),trans.getKategori().getNama_kateogri(),trans.getJenis_transaksi_toString(),trans.getNominal_transaksi(),trans.getKeterangan_transaksi(),trans.getWaktu_transaksi()});
         }

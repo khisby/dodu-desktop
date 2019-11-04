@@ -9,12 +9,12 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author FERNANDO
  */
 public class Login extends javax.swing.JFrame {
+
     private Akun_Controller akunController = new Akun_Controller();
 
     /**
@@ -137,17 +137,22 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String email = tf_loginEmail.getText();
         String password = tf_loginPassword.getText();
-        
-        if(akunController.login("khisby@gmail.com","khisby") != null){
-            Config.pengguna = akunController.login("khisby@gmail.com","khisby");
-//        if(akunController.login(email,password) != null){
-//            Config.pengguna = akunController.login(email, password);
-            new Home().setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "Username atau password salah", "Warning", JOptionPane.ERROR_MESSAGE);
+
+//        if(akunController.login("khisby@gmail.com","khisby") != null){
+//            Config.pengguna = akunController.login("khisby@gmail.com","khisby");
+        if (email.equals("") || password.equals("")) {
+            JOptionPane.showMessageDialog(this, "Username dan password harus diisi", "Warning", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (akunController.login(email, password) != null) {
+                Config.pengguna = akunController.login(email, password);
+                new Home().setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Username atau password salah", "Warning", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tf_loginPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_loginPasswordActionPerformed
@@ -158,11 +163,11 @@ public class Login extends javax.swing.JFrame {
         String username = tf_registerUsername.getText();
         String email = tf_registerEmail.getText();
         String password = tf_registerPassword.getText();
-        
-        if(akunController.register(username, email, password)){
+
+        if (akunController.register(username, email, password)) {
             JOptionPane.showMessageDialog(this, "Registrasi berhasil silahkan Login", "Register Berhasil", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            
+        } else {
+
             JOptionPane.showMessageDialog(this, "Registrasi gagal", "Register Gagal", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
